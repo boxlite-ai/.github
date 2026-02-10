@@ -1,12 +1,88 @@
-## Hi there 👋
+## BoxLite
 
-<!--
+**Secure, lightweight micro-VM sandboxes for AI agents.**
 
-**Here are some ideas to get you started:**
+We build sandbox infrastructure that lets AI agents run untrusted code safely — hardware-isolated, sub-second boot, zero-daemon.
 
-🙋‍♀️ A short introduction - what is your organization all about?
-🌈 Contribution guidelines - how can the community get involved?
-👩‍💻 Useful resources - where can the community find your docs? Is there anything else the community should know?
-🍿 Fun facts - what does your team eat for breakfast?
-🧙 Remember, you can do mighty things with the power of [Markdown](https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)
--->
+---
+
+### Architecture
+
+```
+    ┌───────────────────────────────────────────┐
+    │               Your AI App                 │
+    └───────────────────┬───────────────────────┘
+                        │
+          ┌─────────────┴─────────────┐
+          │                           │
+     as platform                 as library
+          │                           │
+    ┌─────▼─────────────┐             │
+    │      BoxRun       │             │
+    │ · · · · · · · · · │             │
+    │  REST API Server  │             │
+    │  CLI & Web UI     │             │
+    │  Python & Rust SDK│             │
+    └─────┬─────────────┘             │
+          │                           │
+    ┌─────▼───────────────────────────▼───┐
+    │              BoxLite                │
+    │    Embedded micro-VM Sandbox Lib    │
+    │                                     │
+    │    ┌─────┐  ┌─────┐  ┌─────┐       │
+    │    │ VM  │  │ VM  │  │ VM  │  ...  │
+    │    └─────┘  └─────┘  └─────┘       │
+    │                                     │
+    │    KVM / HVF · OCI · Async I/O     │
+    └─────────────────────────────────────┘
+```
+
+---
+
+<h3>Repositories</h3>
+
+- **[BoxLite](https://github.com/boxlite-ai/boxlite)** — Embedded micro-VM sandbox runtime. Lightweight, hardware-isolated, OCI-compatible. SDKs for Python, Node.js, Rust, and C.
+- **[BoxRun](https://github.com/boxlite-ai/boxrun)** — Sandbox management platform. REST API, CLI, web dashboard, single-binary deployment. Powered by BoxLite.
+
+---
+
+<h3>Quick Start</h3>
+
+**BoxLite** — embed in your app:
+
+```bash
+pip install boxlite
+```
+
+```python
+from boxlite import SimpleBox
+
+async with SimpleBox("python:slim") as box:
+    result = await box.run("echo 'Hello from a micro-VM!'")
+    print(result.stdout)
+```
+
+**BoxRun** — platform:
+
+```bash
+boxrun shell ubuntu
+```
+
+---
+
+<h3>Highlights</h3>
+
+- **Sub-second boot** — micro-VMs start in milliseconds, not minutes
+- **Hardware isolation** — each sandbox has its own kernel (KVM / Hypervisor.framework)
+- **OCI compatible** — use any Docker image (`python:slim`, `node:alpine`, `ubuntu`, etc.)
+- **No daemon** — BoxLite links as a library; BoxRun ships as a single binary
+- **Async-first** — designed for high concurrency with streaming I/O
+
+---
+
+<h3>Where to Find Us</h3>
+
+<a href="https://x.com/BoxLiteAI" target="_blank">
+<img src="https://img.shields.io/badge/@BoxLiteAI-%23000000.svg?style=for-the-badge&logo=x&logoColor=white" alt="X (Twitter)" style="margin-bottom: 5px;"/></a>
+<a href="https://discord.gg/bCmaK4Ce" target="_blank">
+<img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" style="margin-bottom: 5px;"/></a>
