@@ -6,7 +6,7 @@ We build sandbox infrastructure that lets AI agents run untrusted code safely �
 
 ---
 
-### Architecture
+<h3>Architecture</h3>
 
 ```
   ┌───────────────────────────────────────────────┐
@@ -53,11 +53,15 @@ pip install boxlite
 ```
 
 ```python
+import asyncio
 from boxlite import SimpleBox
 
-async with SimpleBox("python:slim") as box:
-    result = await box.run("echo 'Hello from a micro-VM!'")
-    print(result.stdout)
+async def main():
+    async with SimpleBox("python:slim") as box:
+        result = await box.run("echo 'Hello from a micro-VM!'")
+        print(result.stdout)
+
+asyncio.run(main())
 ```
 
 **BoxRun** — platform:
@@ -82,5 +86,5 @@ boxrun shell ubuntu
 
 <a href="https://x.com/BoxLiteAI" target="_blank">
 <img src="https://img.shields.io/badge/@BoxLiteAI-%23000000.svg?style=for-the-badge&logo=x&logoColor=white" alt="X (Twitter)" style="margin-bottom: 5px;"/></a>
-<a href="https://discord.gg/bCmaK4Ce" target="_blank">
+<a href="http://go.boxlite.ai/discord" target="_blank">
 <img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" style="margin-bottom: 5px;"/></a>
