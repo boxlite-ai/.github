@@ -1,8 +1,8 @@
 ## BoxLite
 
-**Secure, lightweight micro-VM sandboxes for AI agents.**
+**Stateful, lightweight micro-VM sandboxes for AI agents.**
 
-We build sandbox infrastructure that lets AI agents run untrusted code safely — hardware-isolated, sub-second boot, zero-daemon.
+We build sandbox infrastructure that lets AI agents run untrusted code safely — stateful, lightweight, hardware-isolated, zero-daemon.
 
 ---
 
@@ -39,8 +39,8 @@ We build sandbox infrastructure that lets AI agents run untrusted code safely �
 
 <h3>Repositories</h3>
 
-- **[BoxLite](https://github.com/boxlite-ai/boxlite)** — Embedded micro-VM sandbox runtime. Lightweight, hardware-isolated, OCI-compatible. SDKs for Python, Node.js, Rust, and C.
-- **[BoxRun](https://github.com/boxlite-ai/boxrun)** — Sandbox management platform. REST API, CLI, web dashboard, single-binary deployment. Powered by BoxLite.
+- **[BoxLite](https://github.com/boxlite-ai/boxlite)** — Embedded micro-VM sandbox runtime. Stateful, lightweight, hardware-isolated, OCI-compatible. SDKs for Python, Node.js, Rust, and C.
+- **[BoxRun](https://github.com/boxlite-ai/boxrun)** — Manage stateful, lightweight micro-VM sandboxes. REST API, CLI, web dashboard, single-binary deployment. Powered by BoxLite.
 
 ---
 
@@ -74,10 +74,11 @@ boxrun shell ubuntu
 
 <h3>Highlights</h3>
 
-- **Sub-second boot** — micro-VMs start in milliseconds, not minutes
+- **Stateful** — boxes retain packages, files, and environment across stop/restart
+- **Lightweight** — micro-VMs boot in milliseconds with minimal footprint
 - **Hardware isolation** — each sandbox has its own kernel (KVM / Hypervisor.framework)
 - **OCI compatible** — use any Docker image (`python:slim`, `node:alpine`, `ubuntu`, etc.)
-- **No daemon** — BoxLite links as a library; BoxRun ships as a single binary
+- **No daemon** — BoxLite embeds as a library; BoxRun ships as a single binary
 - **Async-first** — designed for high concurrency with streaming I/O
 
 ---
