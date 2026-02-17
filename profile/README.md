@@ -11,12 +11,12 @@ Embeddable, stateful micro-VMs with hardware isolation and snapshots. Boot in mi
 ```
   ┌───────────────────────────────────────────────┐
   │                                               │
-  │                    BoxRun                      │
-  │        Sandbox Management Platform             │
+  │                    BoxRun                     │
+  │        Sandbox Management Platform            │
   │  · · · · · · · · · · · · · · · · · · · · · ·  │
-  │      REST API Server                           │
-  │      CLI & Web Dashboard                       │
-  │      Python & Rust SDK                         │
+  │      REST API Server                          │
+  │      CLI & Web Dashboard                      │
+  │      Python & Rust SDK                        │
   │                                               │
   └───────────────────────┬───────────────────────┘
                           │
@@ -24,11 +24,11 @@ Embeddable, stateful micro-VMs with hardware isolation and snapshots. Boot in mi
                           │
   ┌───────────────────────▼───────────────────────┐
   │                                               │
-  │                    BoxLite                     │
-  │        Embedded micro-VM Sandbox Library       │
+  │                    BoxLite                    │
+  │        Embedded micro-VM Sandbox Library      │
   │  · · · · · · · · · · · · · · · · · · · · · ·  │
   │      ┌──────┐   ┌──────┐   ┌──────┐           │
-  │      │  VM  │   │  VM  │   │  VM  │   ...      │
+  │      │  VM  │   │  VM  │   │  VM  │   ...     │
   │      └──────┘   └──────┘   └──────┘           │
   │      KVM / HVF  ·  OCI Images  ·  Async I/O   │
   │                                               │
