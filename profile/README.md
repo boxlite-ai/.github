@@ -1,8 +1,8 @@
 ## BoxLite
 
-**Secure, lightweight micro-VM sandboxes for AI agents.**
+**The SQLite of sandboxing — embeddable, stateful micro-VMs with snapshots and hardware isolation.**
 
-We build sandbox infrastructure that lets AI agents run untrusted code safely — hardware-isolated, sub-second boot, zero-daemon.
+Embeddable, stateful micro-VMs with hardware isolation and snapshots. Boot in milliseconds. Just import and run.
 
 ---
 
@@ -39,7 +39,7 @@ We build sandbox infrastructure that lets AI agents run untrusted code safely �
 
 <h3>Repositories</h3>
 
-- **[BoxLite](https://github.com/boxlite-ai/boxlite)** — Embedded micro-VM sandbox runtime. Lightweight, hardware-isolated, OCI-compatible. SDKs for Python, Node.js, Rust, and C.
+- **[BoxLite](https://github.com/boxlite-ai/boxlite)** — Embeddable, stateful micro-VM sandbox with snapshots and hardware isolation. SDKs for Rust, Python, Node.js, and C (Go coming soon).
 - **[BoxRun](https://github.com/boxlite-ai/boxrun)** — Sandbox management platform. REST API, CLI, web dashboard, single-binary deployment. Powered by BoxLite.
 
 ---
@@ -54,11 +54,11 @@ pip install boxlite
 
 ```python
 import asyncio
-from boxlite import SimpleBox
+import boxlite
 
 async def main():
-    async with SimpleBox("python:slim") as box:
-        result = await box.run("echo 'Hello from a micro-VM!'")
+    async with boxlite.SimpleBox(image="python:slim") as box:
+        result = await box.exec("python", "-c", "print('Hello from BoxLite!')")
         print(result.stdout)
 
 asyncio.run(main())
@@ -74,11 +74,11 @@ boxrun shell ubuntu
 
 <h3>Highlights</h3>
 
-- **Sub-second boot** — micro-VMs start in milliseconds, not minutes
-- **Hardware isolation** — each sandbox has its own kernel (KVM / Hypervisor.framework)
-- **OCI compatible** — use any Docker image (`python:slim`, `node:alpine`, `ubuntu`, etc.)
-- **No daemon** — BoxLite links as a library; BoxRun ships as a single binary
-- **Async-first** — designed for high concurrency with streaming I/O
+- **Embeddable** — a single importable library — no cloud accounts, no daemons, no root. Just import and run
+- **Stateful** — environments persist across sessions. Install packages, configure once — come back later and everything is still there
+- **Snapshots** — checkpoint before risky operations, rollback instantly. Fork environments for parallel exploration
+- **Hardware isolation** — each sandbox runs in its own micro-VM with a dedicated Linux kernel (KVM / Hypervisor.framework)
+- **Sub-50ms boot** — micro-VMs start in milliseconds, not minutes
 
 ---
 
