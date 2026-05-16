@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/boxlite-ai/.github/main/profile/logo-dark.png">
-    <img src="https://boxlite.ai/logo.png" alt="BoxLite" width="300">
+    <img src="https://raw.githubusercontent.com/boxlite-ai/.github/main/profile/logo-light.png" alt="BoxLite" width="300">
   </picture>
 </p>
 
