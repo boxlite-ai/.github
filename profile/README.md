@@ -1,4 +1,9 @@
-<p align="center"><img src="https://boxlite.ai/logo.png" alt="BoxLite" width="300"></p>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/boxlite-ai/.github/main/profile/logo-dark.png">
+    <img src="https://boxlite.ai/logo.png" alt="BoxLite" width="300">
+  </picture>
+</p>
 
 <p align="center"><b>One micro-VM runtime — embed it, deploy it, distribute it.</b></p>
 
