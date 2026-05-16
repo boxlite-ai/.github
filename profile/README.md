@@ -1,52 +1,22 @@
-## BoxLite
+# BoxLite
 
-**The SQLite of sandboxing — embeddable, stateful micro-VMs with snapshots and hardware isolation.**
+### A micro-VM runtime in Rust for AI agents — embed it in your app, run it as a server, or cluster it at serverless scale.
 
-Embeddable, stateful micro-VMs with hardware isolation and snapshots. Boot in milliseconds. Just import and run.
+BoxLite spins up lightweight, stateful micro-VMs ("Boxes") and runs OCI
+containers inside them, each with its own Linux kernel. It's **designed to
+span the full range of agent deployments**:
 
----
+- **Library** — embed it in-process, ship sandboxing as a feature.
+- **Server** — run it standalone for multi-tenant workloads.
+- **Distributed service** — cluster it for serverless-scale execution.
 
-<h3>Architecture</h3>
-
-```
-  ┌───────────────────────────────────────────────┐
-  │                                               │
-  │                    BoxRun                     │
-  │        Sandbox Management Platform            │
-  │  · · · · · · · · · · · · · · · · · · · · · ·  │
-  │      REST API Server                          │
-  │      CLI & Web Dashboard                      │
-  │      Python & Rust SDK                        │
-  │                                               │
-  └───────────────────────┬───────────────────────┘
-                          │
-                     powered by
-                          │
-  ┌───────────────────────▼───────────────────────┐
-  │                                               │
-  │                    BoxLite                    │
-  │        Embedded micro-VM Sandbox Library      │
-  │  · · · · · · · · · · · · · · · · · · · · · ·  │
-  │      ┌──────┐   ┌──────┐   ┌──────┐           │
-  │      │  VM  │   │  VM  │   │  VM  │   ...     │
-  │      └──────┘   └──────┘   └──────┘           │
-  │      KVM / HVF  ·  OCI Images  ·  Async I/O   │
-  │                                               │
-  └───────────────────────────────────────────────┘
-```
+**One repo. Warm start 100ms. From sandbox to serverless, from security to scale.**
 
 ---
 
-<h3>Repositories</h3>
+## Getting started
 
-- **[BoxLite](https://github.com/boxlite-ai/boxlite)** — Embeddable, stateful micro-VM sandbox with snapshots and hardware isolation. SDKs for Rust, Python, Node.js, and C (Go coming soon).
-- **[BoxRun](https://github.com/boxlite-ai/boxrun)** — Sandbox management platform. REST API, CLI, web dashboard, single-binary deployment. Powered by BoxLite.
-
----
-
-<h3>Quick Start</h3>
-
-**BoxLite** — embed in your app:
+**Embed it** — sandboxing as a library
 
 ```bash
 pip install boxlite
@@ -64,27 +34,42 @@ async def main():
 asyncio.run(main())
 ```
 
-**BoxRun** — platform:
+**Get the binary** — one-shot CLI
 
 ```bash
-boxrun shell ubuntu
+curl -fsSL https://sh.boxlite.ai | sh
+boxlite run python:slim python -c "print('Hello from BoxLite!')"
 ```
 
----
+**Deploy locally** — standalone server
 
-<h3>Highlights</h3>
+```bash
+boxlite serve                       # REST API on :8100
+```
 
-- **Embeddable** — a single importable library — no cloud accounts, no daemons, no root. Just import and run
-- **Stateful** — environments persist across sessions. Install packages, configure once — come back later and everything is still there
-- **Snapshots** — checkpoint before risky operations, rollback instantly. Fork environments for parallel exploration
-- **Hardware isolation** — each sandbox runs in its own micro-VM with a dedicated Linux kernel (KVM / Hypervisor.framework)
-- **Sub-50ms boot** — micro-VMs start in milliseconds, not minutes
+**Go distributed** — serverless scale
 
----
+```bash
+git clone https://github.com/boxlite-ai/boxlite && cd boxlite/apps/infra
+npx sst deploy --stage production
+```
 
-<h3>Where to Find Us</h3>
+## Highlights
 
-<a href="https://x.com/BoxLiteAI" target="_blank">
-<img src="https://img.shields.io/badge/@BoxLiteAI-%23000000.svg?style=for-the-badge&logo=x&logoColor=white" alt="X (Twitter)" style="margin-bottom: 5px;"/></a>
-<a href="http://go.boxlite.ai/discord" target="_blank">
-<img src="https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white" alt="Discord" style="margin-bottom: 5px;"/></a>
+The all-terrain runtime of the micro-VM domain — **embeddable** in your app,
+**deployable** as a single binary, **distributable** at serverless scale.
+
+- **Stateful** — environments persist across sessions; install once, resume later.
+- **Snapshotable** — checkpoint, roll back instantly, fork for parallel exploration.
+- **Isolated** — every box runs its own Linux kernel in a micro-VM (KVM / Hypervisor.framework).
+- **Fast** — warm start 100ms.
+
+## Links
+
+- **Repo** — https://github.com/boxlite-ai/boxlite
+- **Docs** — https://docs.boxlite.ai/
+
+## Where to find us
+
+[![X (Twitter)](https://img.shields.io/badge/@BoxLiteAI-%23000000.svg?style=for-the-badge&logo=x&logoColor=white)](https://x.com/BoxLiteAI)
+[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](http://go.boxlite.ai/discord)
