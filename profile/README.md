@@ -42,7 +42,7 @@ boxlite run python:slim python -c "print('Hello from BoxLite!')"
 **Deploy it** — a standalone server
 
 ```bash
-boxlite serve                       # REST API on :8100
+boxlite serve 
 ```
 
 **Distribute it** — serverless scale
