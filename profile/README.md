@@ -1,16 +1,14 @@
-# BoxLite
+<p align="center"><img src="https://boxlite.ai/logo.png" alt="BoxLite" width="300"></p>
 
-### A micro-VM runtime in Rust for AI agents — embed it in your app, run it as a server, or cluster it at serverless scale.
+<p align="center"><b>One micro-VM runtime — embed it, deploy it, distribute it.</b></p>
 
-BoxLite spins up lightweight, stateful micro-VMs ("Boxes") and runs OCI
-containers inside them, each with its own Linux kernel. It's **designed to
-span the full range of agent deployments**:
+BoxLite is a micro-VM runtime in Rust. It spins up lightweight, stateful Boxes — OCI containers each running in their own Linux kernel — so AI agents get real isolation, from your laptop to serverless scale.
 
-- **Library** — embed it in-process, ship sandboxing as a feature.
-- **Server** — run it standalone for multi-tenant workloads.
-- **Distributed service** — cluster it for serverless-scale execution.
+- **Embed** — in-process library; ship sandboxing as a feature.
+- **Deploy** — standalone server for multi-tenant workloads.
+- **Distribute** — cluster it for serverless-scale execution.
 
-**One repo. Warm start 100ms. From sandbox to serverless, from security to scale.**
+**Small as a library, elastic as a service — one repo, sub-50ms boot.**
 
 ---
 
@@ -34,20 +32,20 @@ async def main():
 asyncio.run(main())
 ```
 
-**Get the binary** — one-shot CLI
+**Deploy it** — the binary, one command
 
 ```bash
 curl -fsSL https://sh.boxlite.ai | sh
 boxlite run python:slim python -c "print('Hello from BoxLite!')"
 ```
 
-**Deploy locally** — standalone server
+**Deploy it** — a standalone server
 
 ```bash
 boxlite serve                       # REST API on :8100
 ```
 
-**Go distributed** — serverless scale
+**Distribute it** — serverless scale
 
 ```bash
 git clone https://github.com/boxlite-ai/boxlite && cd boxlite/apps/infra
@@ -56,12 +54,10 @@ npx sst deploy --stage production
 
 ## Highlights
 
-An all-in-one micro-VM runtime: **embed** it in your app, **deploy** it as a single binary, **distribute** it at serverless scale.
-
 - **Stateful** — environments persist across sessions; install once, resume later.
-- **Snapshotable** — checkpoint, roll back instantly, fork for parallel exploration.
+- **Reversible** — checkpoint, roll back instantly, fork for parallel exploration.
 - **Isolated** — every box runs its own Linux kernel in a micro-VM (KVM / Hypervisor.framework).
-- **Fast** — warm start 100ms.
+- **Fast** — sub-50ms boot, not minutes.
 
 ## Links
 
