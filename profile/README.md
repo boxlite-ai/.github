@@ -56,8 +56,7 @@ npx sst deploy --stage production
 
 ## Highlights
 
-The all-terrain runtime of the micro-VM domain — **embeddable** in your app,
-**deployable** as a single binary, **distributable** at serverless scale.
+An all-in-one micro-VM runtime: **embed** it in your app, **deploy** it as a single binary, **distribute** it at serverless scale.
 
 - **Stateful** — environments persist across sessions; install once, resume later.
 - **Snapshotable** — checkpoint, roll back instantly, fork for parallel exploration.
