@@ -37,7 +37,7 @@ async def main():
 asyncio.run(main())
 ```
 
-**Deploy it** — the binary, one command
+**Deploy it** — the binary, one command, no daemon
 
 ```bash
 curl -fsSL https://sh.boxlite.ai | sh
