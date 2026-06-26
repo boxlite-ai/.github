@@ -10,6 +10,7 @@
 BoxLite is a micro-VM runtime in Rust. It spins up lightweight, stateful Boxes — OCI containers each running in their own Linux kernel — so AI agents get real isolation, from your laptop to serverless scale.
 
 - **Embed** — in-process library; ship sandboxing as a feature.
+- **Run** - all-in-one CLI, no daemon required, zero deployment
 - **Deploy** — standalone server for multi-tenant workloads.
 - **Distribute** — cluster it for serverless-scale execution.
 
@@ -37,7 +38,7 @@ async def main():
 asyncio.run(main())
 ```
 
-**Deploy it** — the binary, one command, no daemon
+**Run it** — the binary, one command, no daemon
 
 ```bash
 curl -fsSL https://sh.boxlite.ai | sh
