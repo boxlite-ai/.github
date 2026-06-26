@@ -5,7 +5,7 @@
   </picture>
 </p>
 
-<p align="center"><b>One micro-VM runtime — embed it, deploy it, distribute it.</b></p>
+<p align="center"><b>One micro-VM runtime — embed it, run it, deploy it, distribute it.</b></p>
 
 BoxLite is a micro-VM runtime in Rust. It spins up lightweight, stateful Boxes — OCI containers each running in their own Linux kernel — so AI agents get real isolation, from your laptop to serverless scale.
 
